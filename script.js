@@ -37,6 +37,8 @@ function writePassword() {
   }
   function generatePassword() {
     allCasesPW = "";
+
+    //Everything
     if (lengthInput && lCaseTrue && uCaseTrue && numsTrue && charsTrue) {
       for (i = 0; i < userLength; i++) {
         randArray = [getRandomLower(), getRandomUpper(), getRandomNumber(), getRandomSymbol()]
@@ -44,23 +46,102 @@ function writePassword() {
         allCasesPW = allCasesPW + randString.charAt(Math.random() * 4);
       }
     }
-    if (lengthInput && lCaseTrue && uCaseTrue && numsTrue) {
+
+
+    //No Special Characters
+    if (lengthInput && lCaseTrue && uCaseTrue && numsTrue && charsTrue === false) {
       for (i = 0; i < userLength; i++) {
         randArray = [getRandomLower(), getRandomUpper(), getRandomNumber()]
         randString = randArray.join("");
         allCasesPW = allCasesPW + randString.charAt(Math.random() * 3);
       }
     }
-    if (lengthInput && lCaseTrue && uCaseTrue) {
+    //No lowercase 
+    if (lengthInput && lCaseTrue === false && uCaseTrue && numsTrue && charsTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomUpper(), getRandomNumber(), getRandomSymbol()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 3);
+      }
+    }
+    //No Uppercase 
+    if (lengthInput && uCaseTrue === false && numsTrue && charsTrue && lCaseTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomNumber(), getRandomSymbol(), getRandomLower()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 3);
+      }
+    }
+    //No Numbers
+    if (lengthInput && charsTrue && lCaseTrue && uCaseTrue && numsTrue === false) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomNumber(), getRandomSymbol(), getRandomLower()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 3);
+      }
+    }
+
+    //No Numbers or Special Characters
+    if (lengthInput && lCaseTrue && uCaseTrue && numsTrue === false && charsTrue === false) {
       for (i = 0; i < userLength; i++) {
         randArray = [getRandomLower(), getRandomUpper()]
         randString = randArray.join("");
         allCasesPW = allCasesPW + randString.charAt(Math.random() * 2);
       }
     }
-    if (lengthInput && lCaseTrue) {
+    //No Special Characters or lowercase
+    if (lengthInput && lCaseTrue === false && uCaseTrue && numsTrue && charsTrue === false) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomUpper(), getRandomNumber()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 2);
+      }
+    }
+    //No lowercase or Uppercase
+    if (lengthInput && lCaseTrue === false && uCaseTrue === false && numsTrue && charsTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomNumber(), getRandomSymbol()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 2);
+      }
+    }
+    //No Uppercase or Numbers
+    if (lengthInput && lCaseTrue && uCaseTrue === false && numsTrue === false && charsTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomSymbol(), getRandomLower()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 2);
+      }
+    }
+
+    //No Uppercase, Numbers, or Special Characters
+    if (lengthInput && lCaseTrue && uCaseTrue === false && numsTrue === false && charsTrue === false) {
       for (i = 0; i < userLength; i++) {
         randArray = [getRandomLower()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random());
+      }
+    }
+    //No lowercase, Numbers, or Special Characters 
+    if (lengthInput && lCaseTrue === false && uCaseTrue && numsTrue === false && charsTrue === false) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomUpper()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random());
+      }
+    }
+    //No lowercase, Uppercase, or Special Characters
+    if (lengthInput && lCaseTrue === false && uCaseTrue === false && numsTrue && charsTrue === false) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomNumber()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random());
+      }
+    }
+    //No lowercase, Uppercase, or Numbers
+    if (lengthInput && lCaseTrue === false && uCaseTrue === false && numsTrue === false && charsTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomSymbol()]
         randString = randArray.join("");
         allCasesPW = allCasesPW + randString.charAt(Math.random());
       }
