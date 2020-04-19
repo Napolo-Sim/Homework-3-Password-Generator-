@@ -10,12 +10,13 @@ function getRandomUpper() {
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
-
 function getRandomSymbol() {
   var symbols = "!@#$%^&*(){}[]=<>/,.'";
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
+var randArray = [getRandomLower(), getRandomUpper(), getRandomNumber(), getRandomSymbol()]
+var randString = randArray.join("");
 var lengthInput = true;
 var lCaseTrue = true;
 var uCaseTrue = true;
@@ -38,8 +39,9 @@ function writePassword() {
     if (lengthInput && lCaseTrue && uCaseTrue && numsTrue && charsTrue) {
       allCasesPW = "";
       for (i = 0; i < userLength; i++) {
-        allCasesPW = allCasesPW + getRandomLower() + getRandomUpper() +
-          getRandomNumber() + getRandomSymbol();
+        randArray = [getRandomLower(), getRandomUpper(), getRandomNumber(), getRandomSymbol()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 4);
       }
       return allCasesPW;
 
