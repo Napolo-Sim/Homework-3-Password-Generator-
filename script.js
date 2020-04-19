@@ -36,16 +36,36 @@ function writePassword() {
     charsTrue = confirm("Would you like special characters in your password?");
   }
   function generatePassword() {
+    allCasesPW = "";
     if (lengthInput && lCaseTrue && uCaseTrue && numsTrue && charsTrue) {
-      allCasesPW = "";
       for (i = 0; i < userLength; i++) {
         randArray = [getRandomLower(), getRandomUpper(), getRandomNumber(), getRandomSymbol()]
         randString = randArray.join("");
         allCasesPW = allCasesPW + randString.charAt(Math.random() * 4);
       }
-      return allCasesPW;
-
     }
+    if (lengthInput && lCaseTrue && uCaseTrue && numsTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomLower(), getRandomUpper(), getRandomNumber()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 3);
+      }
+    }
+    if (lengthInput && lCaseTrue && uCaseTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomLower(), getRandomUpper()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random() * 2);
+      }
+    }
+    if (lengthInput && lCaseTrue) {
+      for (i = 0; i < userLength; i++) {
+        randArray = [getRandomLower()]
+        randString = randArray.join("");
+        allCasesPW = allCasesPW + randString.charAt(Math.random());
+      }
+    }
+    return allCasesPW
   }
 
 
