@@ -1,9 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-// var lCase = "abcdefghijklmnopqrstuvwxyz";
-// var uCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-// var nums = "0123456789";
-// var chars = "!@#$%^&*()";
+
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
@@ -19,6 +16,7 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
+var lengthInput = true;
 var lCaseTrue = true;
 var uCaseTrue = true;
 var numsTrue = true;
@@ -29,15 +27,21 @@ function writePassword() {
   var userLength = prompt("How long would you like your password to be? (8-128)");
   if (userLength > 128 || userLength < 8) {
     alert("Please pick a valid number range.");
+    lengthInput = false;
+  } else {
+    lCaseTrue = confirm("Would you like lower case letters in your password?");
+    uCaseTrue = confirm("Would you like uppercase letters in your password?");
+    numsTrue = confirm("Would you like numbers in your password?");
+    charsTrue = confirm("Would you like special characters in your password?");
   }
-  lCaseTrue = confirm("Would you like lower case letters in your password?");
-  uCaseTrue = confirm("Would you like uppercase letters in your password?");
-  numsTrue = confirm("Would you like numbers in your password?");
-  charsTrue = confirm("Would you like special characters in your password?");
-
   function generatePassword() {
-    if (lCaseTrue) {
-      document.getElementById("password").innerHTML = "Yahoo New Password!";
+    if (lengthInput && lCaseTrue && uCaseTrue && numsTrue && charsTrue) {
+      allCasesPW = "";
+      for (i = 0; i < userLength; i++) {
+        allCasesPW = allCasesPW + getRandomLower() + getRandomUpper() +
+          getRandomNumber() + getRandomSymbol();
+      }
+      return allCasesPW;
 
     }
   }
